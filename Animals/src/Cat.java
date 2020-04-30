@@ -19,15 +19,20 @@ public class Cat extends Animal{
         System.out.println(("Species " + this.species
                 + "\nBreed: " + this.breed
                 + "\nHair color: " + this.hairColor
-                + "\nBase Speed: " + this.speed
+                + "\nBase Speed: " + this.getSpeed()
                 + "\nTop Speed: " + this.run()
         ));
     }
 
     public double move(double pace) {
-        pace = this.speed * pace;
+        pace = this.getSpeed() * pace;
         return pace;
     }
+
+    public void eat(){
+
+    }
+
     public double sneak() { return move(0.2); }
     public double walk() { return move(1); }
     public double trot() { return move(2); }

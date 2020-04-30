@@ -113,15 +113,13 @@ class GroceryList {
                     "    )        / /\n" +
                     "   /       ,'-'");
             System.out.println("List is fucking empty");
-            Scanner in = new Scanner(System.in);
-            in.nextLine();
+            hitEnter();
         } else {
             for (int i=0; i<groceryList.size(); i++) {
                 System.out.println(String.format("%s: %s", i+1, groceryList.get(i)));
             }
             System.out.println("\nHit Enter to continue");
-            Scanner in = new Scanner(System.in);
-            in.nextLine();
+            hitEnter();
         }
     }
 
@@ -137,7 +135,10 @@ class GroceryList {
         System.out.println(String.format("%s has been fucking removed from the list", deletedItem));
     }
 
+
+
     private void deleteList() {
+
         System.out.println("             . . .                         \n" +
                 "              \\|/                          \n" +
                 "            `--+--'                        \n" +
@@ -198,8 +199,7 @@ class GroceryList {
                 "-------------------------------------------------------------------------------");
         groceryList.clear();
         System.out.println("Your goddamn list was deleted");
-        Scanner in = new Scanner(System.in);
-        in.nextLine();
+        hitEnter();
     }
 
     private void findItem(String searchTerm) {
@@ -207,14 +207,16 @@ class GroceryList {
         if (!itemInList) {
             System.out.println("\nThat bullshit ain't in the grocery list");
             System.out.println("\nHit Enter to continue");
-            Scanner in = new Scanner(System.in);
-            in.nextLine();
+            hitEnter();
         } else {
             int index = groceryList.indexOf(searchTerm);
             System.out.println(String.format("\n%s is goddamn item number %s in your mother fucking list", searchTerm, index+1));
-            System.out.println("\nHit Enter to continue");
-            Scanner in = new Scanner(System.in);
-            in.nextLine();
+            hitEnter();
         }
+    }
+
+    private void hitEnter() {
+        Scanner in = new Scanner(System.in);
+        in.nextLine();
     }
 }

@@ -1,11 +1,13 @@
-public class Animal {
+public abstract class Animal {
 
-    protected String name;
-    protected int age;
-    protected int weight;
-    protected double speed;
-    protected String bloodType;
-    protected boolean isGoodBoy;
+    private String name;
+    private int age;
+    private int weight;
+    private double speed;
+    private String bloodType;
+    private boolean isGoodBoy;
+    private static int animalCounter = 0;
+    private final int animalID;
 
     public Animal(String name, int age, int weight, double speed, String bloodType, boolean isGoodBoy) {
         this.name = name;
@@ -14,6 +16,8 @@ public class Animal {
         this.speed = speed;
         this.bloodType = bloodType;
         this.isGoodBoy = isGoodBoy;
+        animalCounter++;
+        this.animalID = animalCounter;
     }
     public Animal(String name){
         this(name, 0, 0, 0, "Unkown", true);
@@ -24,13 +28,13 @@ public class Animal {
     public int getAge(){ return this.age; }
     public int getWeight(){ return this.weight; }
     public boolean getGoodBoyStatus(){ return this.isGoodBoy; }
+    public String getBloodType() { return bloodType; }
+    public double getSpeed() { return speed; }
 
-    public void eat(){
-        System.out.println("The animal ate some food!");
-    }
-    public void move(){
-        System.out.println("The animal moved " + this.speed + " units!");
-    }
+    public abstract void eat();
+    public abstract double move(double pace);
+
+
     public void getInfo(){
         System.out.println(("\nName: " + this.name
                 + "\nAge: " + this.age
@@ -38,6 +42,7 @@ public class Animal {
                 + "\nSpeed: " + this.speed
                 + "\nBlood Type: " + this.bloodType
                 + "\nIs a good boy? " + this.isGoodBoy
+                + "\nID = " + this.animalID
         ));
     }
 }

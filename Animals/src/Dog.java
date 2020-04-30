@@ -18,13 +18,13 @@ public class Dog extends Animal {
         System.out.println(("Species: " + this.species
                 + "\nBreed: " + this.breed
                 + "\nHair type: " + this.hairType
-                + "\nBase Speed: " + this.speed
+                + "\nBase Speed: " + this.getSpeed()
                 + "\nTop Speed: " + this.run()
         ));
     }
 
     public double move(double pace){
-        pace = this.speed * pace;
+        pace = this.getSpeed() * pace;
         return pace;
     }
     public double sneak() { return move(0.2); }
@@ -36,6 +36,10 @@ public class Dog extends Animal {
         System.out.println("Dog says \"Woof Woof!\"");
     }
     public void speak(){
-        System.out.println(this.name + " says \"Woof woof!\"");
+        System.out.println(this.getName() + " says \"Woof woof!\"");
+    }
+
+    public void eat() {
+        System.out.println(this.getName() + " ate");
     }
 }

@@ -6,7 +6,11 @@ public class Main {
 
 
     public static void main(String[] args){
-        int[] myDamnInts = getInts(5);
+        System.out.println("Welcome to Ed's Array app!");
+        System.out.println("How many elements do you want your damn array to have?");
+        System.out.print("Number of Elmenents: ");
+        int arraySize = in.nextInt();
+        int[] myDamnInts = getInts(arraySize);
         printArray(myDamnInts);
         getMin(myDamnInts);
         getMean(myDamnInts);
@@ -14,6 +18,9 @@ public class Main {
         reverse(myDamnInts);
         System.out.println("\nSorted:");
         sorted(myDamnInts);
+        System.out.print("Enter int to search for: ");
+        int search = in.nextInt();
+        searchForItem(search, myDamnInts);
     }
 
     // Prints all elements of an array
@@ -25,9 +32,10 @@ public class Main {
 
     // Gets array of ints from user input
     static int[] getInts(int num){
-        System.out.println("Enter 5 numbers you little fucking pussy ass bitch: ");
+        System.out.println(String.format("Enter %s numbers you lil' pussy ass bitch: ", num));
         int[] values = new int[num];
         for(int i=0; i<values.length; i++){
+            System.out.print(" > ");
             values[i] = in.nextInt();
         }
         return values;
@@ -85,5 +93,27 @@ public class Main {
         }
         printArray(reversed);
         return reversed;
+    }
+
+    // Binary Search for an item (MUST be SORTED array to work)
+    static boolean searchForItem(int search, int[] array) {
+        int lowIndex = 0;
+        int highIndex = array.length-1;
+
+        while (lowIndex <= highIndex) {
+            int midIndex = (lowIndex+highIndex)/2;
+            int midValue = array[midIndex];
+            if (search == midValue) {
+                System.out.println("Fuckin' Item found");
+                return true;
+            } else if (search < midValue) {
+                highIndex = midIndex-1;
+            } else if (search > midValue) {
+                lowIndex = midIndex+1;
+            }
+        }
+        System.out.println("Item not fuckin' found");
+        System.out.println("(╯°□°)╯︵ ┻━┻");
+        return false;
     }
 }
